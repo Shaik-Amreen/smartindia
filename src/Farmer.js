@@ -1,25 +1,65 @@
-import React, { useEffect } from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { Text, View, StyleSheet, Image } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import axios from 'axios';
+import { ScrollView } from 'react-native-web';
 
 
 
 
 function HomeScreen() {
 
-    useEffect(() => {
-        axios.post(`http://localhost:4000/farmer/finddetails`).then((response) => {
-            console.log(response.data);
-          });
-    }, [])
 
+    const [farmdata, setfarmdata] = useState([
+        {
+            discount: { quantity: '10kg', price: '200' },
+            image: require("../assets/carrot.gif"),
+            price: { vegtype: 'carrot', price: '100' },
+            typeid: "12",
+            _id: "62278e73e3197fd5361e388d"
+        },
+        {
+            discount: { quantity: '10kg', price: '200' },
+            image: require("../assets/tomato.gif"),
+            price: { vegtype: 'tomato', price: '100' },
+            typeid: "12",
+            _id: "62278e73e3197fd5361e388e"
+        }
+    ])
+
+
+    useEffect(() => {
+        fetchdata()
+    }, [])
+    const fetchdata = () => {
+        // axios.post(`http://localhost:4000/farmer/finddetails`).then((response) => {
+        //     setfarmdata(response.data)
+        //     console.log(response.data)
+        // });
+        // console.log(farmdata)
+
+
+    }
     return (
-        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-            <Text>Home!</Text>
-        </View>
+        <ScrollView style={{ margin: 30 }}>
+            <ScrollView>
+                {farmdata.map((e) =>
+                    <View key={e._id}>
+                        <View>
+                            <Image
+                                source={e.image}
+                                style={{ width: 320, height: 320 }}
+                            />
+                        </View>
+
+                        <Text style={styles.heading}>{e.price.vegtype.toLocaleUpperCase()}</Text>
+                        <Text>{e.price.price}</Text>
+                        <Text> {e.discount.quantity} {e.discount.price}</Text>
+                    </View>)}
+            </ScrollView>
+        </ScrollView>
     );
 }
 
@@ -70,4 +110,9 @@ const styles = StyleSheet.create({
         width: '100%',
         backgroundColor: 'red'
     },
+    heading: {
+        color: '#1b1c1e',
+        fontWeight: '500',
+        fontSize: 20
+    }
 });
