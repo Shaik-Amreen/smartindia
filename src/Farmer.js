@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { Text, View, StyleSheet, Image } from 'react-native';
+import { Text, View, StyleSheet, Image, ScrollView } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import axios from 'axios';
-import { ScrollView } from 'react-native-web';
 
 
 
@@ -43,22 +42,30 @@ function HomeScreen() {
 
     }
     return (
-        <ScrollView style={{ margin: 30 }}>
-            <ScrollView>
-                {farmdata.map((e) =>
-                    <View key={e._id}>
-                        <View>
-                            <Image
-                                source={e.image}
-                                style={{ width: 320, height: 320 }}
-                            />
-                        </View>
+        <ScrollView >
 
-                        <Text style={styles.heading}>{e.price.vegtype.toLocaleUpperCase()}</Text>
-                        <Text>{e.price.price}</Text>
-                        <Text> {e.discount.quantity} {e.discount.price}</Text>
+            <View style={styles.container}>
+
+                {farmdata.map((e) =>
+                    <View key={e._id} style={styles.elevation}>
+
+                        <Image
+                            source={e.image}
+                            style={{ width: 320, height: 320 }}
+                        />
+
+
+                        <View style={{ justifyContent: 'center', alignItems: 'center' ,padding:10}}>
+                            <Text style={styles.heading}>{e.price.vegtype.toLocaleUpperCase()}</Text>
+                            <Text>{e.price.price}</Text>
+                            <Text> {e.discount.quantity} {e.discount.price}</Text>
+                        </View>
                     </View>)}
-            </ScrollView>
+
+
+
+            </View>
+
         </ScrollView>
     );
 }
@@ -108,11 +115,16 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         width: '100%',
-        backgroundColor: 'red'
+        backgroundColor: '#f5f5f5'
     },
     heading: {
         color: '#1b1c1e',
         fontWeight: '500',
         fontSize: 20
     }
+    ,elevation: {
+        elevation: 20,
+        shadowColor: '#52006A',
+        marginTop:50
+      },
 });
