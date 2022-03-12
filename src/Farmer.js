@@ -5,6 +5,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import axios from 'axios';
 
+import Voice from './Voice';
+
 
 
 
@@ -14,15 +16,108 @@ function HomeScreen() {
     const [farmdata, setfarmdata] = useState([
         {
             discount: { quantity: '10kg', price: '200' },
-            image: require("../assets/carrot.gif"),
+            image: require("../assets/plus.gif"),
+            price: { vegtype: 'You can click here to proceed with separate category', price: '100' },
+            typeid: "12",
+            _id: "62278e73e3197fd5361e388e"
+        },
+        {
+            discount: { quantity: '10kg', price: '200' },
+            image: require("../assets/Carrot.gif"),
             price: { vegtype: 'carrot', price: '100' },
             typeid: "12",
             _id: "62278e73e3197fd5361e388d"
         },
+
         {
             discount: { quantity: '10kg', price: '200' },
-            image: require("../assets/tomato.gif"),
+            image: require("../assets/Tomato.gif"),
             price: { vegtype: 'tomato', price: '100' },
+            typeid: "12",
+            _id: "62278e73e3197fd5361e388e"
+        },
+        {
+            discount: { quantity: '10kg', price: '200' },
+            image: require("../assets/pumpkin.gif"),
+            price: { vegtype: 'Pumpkin', price: '100' },
+            typeid: "12",
+            _id: "62278e73e3197fd5361e388e"
+        },
+        {
+            discount: { quantity: '10kg', price: '200' },
+            image: require("../assets/Beans.jpg"),
+            price: { vegtype: 'Beans', price: '100' },
+            typeid: "12",
+            _id: "62278e73e3197fd5361e388e"
+        }
+        , {
+            discount: { quantity: '10kg', price: '200' },
+            image: require("../assets/Bittergourd.jpg"),
+            price: { vegtype: 'Bitter gourd', price: '100' },
+            typeid: "12",
+            _id: "62278e73e3197fd5361e388e"
+        }
+        , {
+            discount: { quantity: '10kg', price: '200' },
+            image: require("../assets/Bottlegourd.jpg"),
+            price: { vegtype: 'Bottle gourd', price: '100' },
+            typeid: "12",
+            _id: "62278e73e3197fd5361e388e"
+        }
+        , {
+            discount: { quantity: '10kg', price: '200' },
+            image: require("../assets/Capsicum.jpg"),
+            price: { vegtype: 'Capsicum', price: '100' },
+            typeid: "12",
+            _id: "62278e73e3197fd5361e388e",
+        },
+        {
+            discount: { quantity: '10kg', price: '200' },
+            image: require("../assets/Chilli.jpg"),
+            price: { vegtype: 'Chilli', price: '100' },
+            typeid: "12",
+            _id: "62278e73e3197fd5361e388e"
+        },
+        {
+            discount: { quantity: '10kg', price: '200' },
+            image: require("../assets/Cucumber.jpg"),
+            price: { vegtype: 'Cucumber', price: '100' },
+            typeid: "12",
+            _id: "62278e73e3197fd5361e388e"
+        }
+        , {
+            discount: { quantity: '10kg', price: '200' },
+            image: require("../assets/Ivygourd.jpg"),
+            price: { vegtype: 'Ivy gourd', price: '100' },
+            typeid: "12",
+            _id: "62278e73e3197fd5361e388e"
+        }
+        ,
+        {
+            discount: { quantity: '10kg', price: '200' },
+            image: require("../assets/LadyFinger.jpg"),
+            price: { vegtype: 'Lady Finger', price: '100' },
+            typeid: "12",
+            _id: "62278e73e3197fd5361e388e"
+        },
+        {
+            discount: { quantity: '10kg', price: '200' },
+            image: require("../assets/Leafyvegetables.jpg"),
+            price: { vegtype: 'Leafy vegetables', price: '100' },
+            typeid: "12",
+            _id: "62278e73e3197fd5361e388e"
+        }
+        , {
+            discount: { quantity: '10kg', price: '200' },
+            image: require("../assets/Potato.png"),
+            price: { vegtype: 'Potato', price: '100' },
+            typeid: "12",
+            _id: "62278e73e3197fd5361e388e"
+        },
+        {
+            discount: { quantity: '10kg', price: '200' },
+            image: require("../assets/Radish.jpg"),
+            price: { vegtype: 'Radish', price: '100' },
             typeid: "12",
             _id: "62278e73e3197fd5361e388e"
         }
@@ -33,39 +128,34 @@ function HomeScreen() {
         fetchdata()
     }, [])
     const fetchdata = () => {
-        // axios.post(`http://localhost:4000/farmer/finddetails`).then((response) => {
-        //     setfarmdata(response.data)
-        //     console.log(response.data)
-        // });
-        // console.log(farmdata)
+        axios.post(`http://localhost:4000/farmer/finddetails`).then((response) => {
+            // setfarmdata(response.data)
+            console.log(response.data)
+        });
+        console.log(farmdata)
 
 
     }
     return (
         <ScrollView >
-
-            <View style={styles.container}>
-
+            <ScrollView>
                 {farmdata.map((e) =>
-                    <View key={e._id} style={styles.elevation}>
+                    <View key={e._id} style={{ elevation: 5, backgroundColor: 'white', margin: 30 }}>
+                        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                            <Voice {...{ "name": `Hey buddy , This is ${e.price.vegtype} , Click on it , if you want to proceed to sell your product , in this category .` }} />
+                            <Image
+                                source={e.image}
+                                style={{ width: 320, height: 320 }}
+                            />
+                        </View>
 
-                        <Image
-                            source={e.image}
-                            style={{ width: 320, height: 320 }}
-                        />
-
-
-                        <View style={{ justifyContent: 'center', alignItems: 'center' ,padding:10}}>
+                        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', marginBottom: 30 }}>
                             <Text style={styles.heading}>{e.price.vegtype.toLocaleUpperCase()}</Text>
-                            <Text>{e.price.price}</Text>
-                            <Text> {e.discount.quantity} {e.discount.price}</Text>
+                            {/* <Text style={{ color: 'grey' }}>{e.price.price} ruppes per kg</Text>
+                            <Text style={{ color: 'grey' }}>  {e.discount.price} rupees only more than {e.discount.quantity} kg</Text> */}
                         </View>
                     </View>)}
-
-
-
-            </View>
-
+            </ScrollView>
         </ScrollView>
     );
 }
@@ -93,7 +183,7 @@ export default function Farmer() {
                                 ? 'ios-information-circle'
                                 : 'ios-information-circle-outline';
                         } else if (route.name === 'Settings') {
-                            iconName = focused ? 'ios-list-box' : 'ios-list';
+                            iconName = focused ? 'ios-list' : 'ios-list';
                         }
 
                         // You can return any component that you like here!
@@ -115,16 +205,11 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         width: '100%',
-        backgroundColor: '#f5f5f5'
+        backgroundColor: 'red'
     },
     heading: {
         color: '#1b1c1e',
         fontWeight: '500',
         fontSize: 20
     }
-    ,elevation: {
-        elevation: 20,
-        shadowColor: '#52006A',
-        marginTop:50
-      },
 });
