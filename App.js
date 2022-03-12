@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import Farmer from './src/Farmer';
 import Login from './src/Login';
 import ModalDemo from './src/ModalDemo';
+import Voice from './src/Voice';
 
 export default function App() {
   return (
@@ -16,7 +17,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
+
     width: '100%',
-    backgroundColor: 'black'
   },
 });
