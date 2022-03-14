@@ -16,14 +16,14 @@ function HomeScreen() {
 
         {
             discount: { quantity: '10kg', price: '200' },
-            image: require("../assets/Carrot.gif"),
+            image: require("../assets/carrot.gif"),
             price: { vegtype: 'carrot', price: '100' },
             typeid: "12",
             _id: "62278e73e3197fd5361e388d"
         },
         {
             discount: { quantity: '10kg', price: '200' },
-            image: require("../assets/Tomato.gif"),
+            image: require("../assets/tomato.gif"),
             price: { vegtype: 'tomato', price: '100' },
             typeid: "12",
             _id: "62278e73e3197fd5361e388e"
@@ -37,7 +37,7 @@ function HomeScreen() {
         },
         {
             discount: { quantity: '10kg', price: '200' },
-            image: require("../assets/Beans.jpg"),
+            image: require("../assets/beans.jpg"),
             price: { vegtype: 'Beans', price: '100' },
             typeid: "12",
             _id: "62278e73e3197fd5361e388e"
@@ -72,7 +72,7 @@ function HomeScreen() {
         },
         {
             discount: { quantity: '10kg', price: '200' },
-            image: require("../assets/Cucumber.jpg"),
+            image: require("../assets/cucumber.jpg"),
             price: { vegtype: 'Cucumber', price: '100' },
             typeid: "12",
             _id: "62278e73e3197fd5361e388e"
@@ -101,7 +101,7 @@ function HomeScreen() {
         }
         , {
             discount: { quantity: '10kg', price: '200' },
-            image: require("../assets/Potato.png"),
+            image: require("../assets/potato.png"),
             price: { vegtype: 'Potato', price: '100' },
             typeid: "12",
             _id: "62278e73e3197fd5361e388e"

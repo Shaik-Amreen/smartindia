@@ -14,7 +14,11 @@ export default function App() {
   const [number, onChangeNumber] = React.useState('');
   const [valid, setValid] = useState('')
 
-
+return(
+  <View>
+    <Text>Hello</Text>
+  </View>
+)
 
   const press = () => {
     if (number.length == 10) {
