@@ -142,7 +142,7 @@ function HomeScreen() {
                 {farmdata.map((e) =>
                     <View key={e._id} style={{ elevation: 5, backgroundColor: 'white', margin: 30 }}>
                         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                            <Voice {...{ "name": `Hey buddy , This is ${e.price.vegtype} , Click on it , if you want to proceed to sell your product , in this category .` }} />
+                            <Voice {...{ "name": `Hello , This is ${e.price.vegtype} , Click on it , if you want to proceed to sell your product , in this category .` }} />
                             <Image
                                 source={e.image}
                                 style={{ width: 320, height: 320 }}
