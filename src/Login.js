@@ -1,57 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import { Text, View, TextInput, StyleSheet, Button, TouchableOpacity, Image, Alert } from 'react-native';
-import { AsyncStorage } from '@react-native-async-storage/async-storage';
+
 import Automatedvoice from './Automatedvoice';
 
 const Login = () => {
     const [number, onChangeNumber] = React.useState('');
     const [valid, setValid] = useState('')
-    useEffect(() => {
-
-        _retrieveData()
-
-    }, [])
 
 
 
     const press = () => {
         if (number.length == 10) {
-            _storeData()
+
             setValid(null)
         }
         else {
             setValid('Enter a valid phone number')
         }
     }
-    _retrieveData = async () => {
-        try {
 
-            const value = await AsyncStorage.getItem('typeid');
-
-            if (value !== null) {
-
-                console.log(value, "hyhello");
-            }
-        } catch (error) {
-            // Error retrieving data
-        }
-    };
 
     const change = (e) => {
         onChangeNumber(e)
         setValid(100)
     }
-    _storeData = async () => {
-        try {
-            await AsyncStorage.setItem(
-                'typeid',
-                number
-            );
-            _retrieveData()
-        } catch (error) {
-            // Error saving data
-        }
-    };
 
     return (
         <View style={styles.container}>
@@ -73,7 +45,8 @@ const Login = () => {
                 style={styles.button} onPress={press}>
                 <Text style={styles.text}>SUBMIT</Text>
             </TouchableOpacity>
-            {(valid == '' && valid != 100) ? <Automatedvoice name="Please enter phone number , , , , , ," /> : (valid != 100 && valid != null) ?
+            {(valid == '' && valid != 100) ? <Automatedvoice name="Hello ! Welcome to Agri market .Your cuurent location is Angallu,
+            you can grow Tomatoes , corn  Please enter phone number to proceed further" /> : (valid != 100 && valid != null) ?
                 <Automatedvoice name="Enter a valid phone number . This number no longers exists " /> : null}
 
         </View>
