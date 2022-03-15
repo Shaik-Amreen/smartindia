@@ -23,7 +23,7 @@ function HomeScreen() {
         },
         {
             discount: { quantity: '10kg', price: '200' },
-            image: require("../assets/Carrot.gif"),
+            image: require("../assets/carrot.gif"),
             price: { vegtype: 'carrot', price: '100' },
             typeid: "12",
             _id: "62278e73e3197fd5361e388d"

@@ -3,6 +3,10 @@ import { Text, View, TextInput, StyleSheet, Button, TouchableOpacity, Image, Ale
 import { AsyncStorage } from '@react-native-async-storage/async-storage';
 import Automatedvoice from './Automatedvoice';
 
+// import { StackNavigator } from 'react-navigation';
+1
+// import { StackNavigator } from 'react-navigation';r
+
 const Login = () => {
     const [number, onChangeNumber] = React.useState('');
     const [valid, setValid] = useState('')
