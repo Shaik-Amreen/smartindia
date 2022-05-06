@@ -1,12 +1,20 @@
-import * as React from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, TouchableOpacity, Text } from 'react-native';
 import * as Speech from 'expo-speech';
 
 export default function Voice(props) {
 
+    const listAllVoiceOptions = async () => {
+        let voices = await Speech.getAvailableVoicesAsync()
+        console.log(voices)
+    }
+
     const speak = (content) => {
-        Speech.speak(content);
+        Speech.speak(content, { language: 'te-IN' });
     };
+
+    useEffect(listAllVoiceOptions)
+
 
     //Price is , ${props.name.price.price} per kg. If you buy more than ${props.name.discount.quantity} , you get at ${props.name.discount.price} rupees only`
 

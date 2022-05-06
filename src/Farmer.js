@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Text, View, StyleSheet, Image, ScrollView } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import { Text, View, StyleSheet, Image, ScrollView, TouchableOpacity, TextInput } from 'react-native';
+import { Ionicons, FontAwesome } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import axios from 'axios';
@@ -168,6 +168,20 @@ function SettingsScreen() {
     );
 }
 
+function Fertilizers() {
+    return (
+        <View style={[styles.container, { display: 'flex' }]}>
+            <Voice {...{ "name": `Hello , This is compost , Click on it , to pruchase` }} />
+            <Image
+                source={require('../assets/fertlizer.jpg')}
+                style={{ width: 320, height: 320, marginBottom: 90, borderRadius: 10 }}
+            />
+        </View>
+    )
+
+}
+
+
 const Tab = createBottomTabNavigator();
 
 export default function Farmer() {
@@ -185,7 +199,9 @@ export default function Farmer() {
                         } else if (route.name === 'Settings') {
                             iconName = focused ? 'ios-list' : 'ios-list';
                         }
-
+                        else if (route.name === 'Fertilizersname') {
+                            iconName = focused ? 'ios-leaf-outline' : 'ios-leaf-outline';
+                        }
                         // You can return any component that you like here!
                         return <Ionicons name={iconName} size={size} color={color} />;
                     },
